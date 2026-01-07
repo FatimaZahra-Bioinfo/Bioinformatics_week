@@ -1,2 +1,1 @@
-# Bioinformatics_week
-Work of the bioinformatics week CIHEAM Zaragoza
+This is a simple README file in Markdown format
