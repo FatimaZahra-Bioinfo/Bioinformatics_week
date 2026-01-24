@@ -114,3 +114,97 @@ Last position-specific scoring matrix computed, weighted observed percentages ro
 ```
 ## EX6:
 ### Create a FASTA file with the complete protein sequences of the matches of your protein search with bit score > 200. You might find one-liners useful for this.
+```bash
+awk '$12 > 200 {print $2}' test.faa.blast | sort -u | blastdbcmd -db uniprot_Atha.fasta -entry_batch - -out high_score_hits.fasta
+```
+This shows an error in the terminal. The issue goes back to the blast command run in Exercise 4.1.1 that needs the -parse_seqids flag because without it BLAST creates a simple database where it doesn't "understand" the complex ID structure (like sp|Q9ZTX8|...).
+
+Thus before running the previuos command, we ran the following code:
+```bash
+makeblastdb -dbtype prot -in uniprot_Atha.fasta -parse_seqids
+```
+to confirm the file isn't empty:
+```bash
+ls -sh high_score_hits.fasta
+```
+The file looks:
+```bash
+>O23661 Auxin response factor 3 OS=Arabidopsis thaliana OX=3702 GN=ARF3 PE=1 SV=2
+MGGLIDLNVMETEEDETQTQTPSSASGSVSPTSSSSASVSVVSSNSAGGGVCLELWHACAGPLISLPKRGSLVLYFPQGH
+LEQAPDFSAAIYGLPPHVFCRILDVKLHAETTTDEVYAQVSLLPESEDIERKVREGIIDVDGGEEDYEVLKRSNTPHMFC
+KTLTASDTSTHGGFSVPRRAAEDCFPPLDYSQPRPSQELLARDLHGLEWRFRHIYRGQPRRHLLTTGWSAFVNKKKLVSG
+DAVLFLRGDDGKLRLGVRRASQIEGTAALSAQYNQNMNHNNFSEVAHAISTHSVFSISYNPKASWSNFIIPAPKFLKVVD
+YPFCIGMRFKARVESEDASERRSPGIISGISDLDPIRWPGSKWRCLLVRWDDIVANGHQQRVSPWEIEPSGSISNSGSFV
+TTGPKRSRIGFSSGKPDIPVSEGIRATDFEESLRFQRVLQGQEIFPGFINTCSDGGAGARRGRFKGTEFGDSYGFHKVLQ
+GQETVPAYSITDHRQQHGLSQRNIWCGPFQNFSTRILPPSVSSSPSSVLLTNSNSPNGRLEDHHGGSGRCRLFGFPLTDE
+TTAVASATAVPCVEGNSMKGASAVQSNHHHSQGRDIYAMRDMLLDIAL
+>P93022 Auxin response factor 7 OS=Arabidopsis thaliana OX=3702 GN=ARF7 PE=1 SV=2
+MKAPSSNGVSPNPVEGERRNINSELWHACAGPLISLPPAGSLVVYFPQGHSEQVAASMQKQTDFIPSYPNLPSKLICMLH
+NVTLNADPETDEVYAQMTLQPVNKYDRDALLASDMGLKLNRQPNEFFCKTLTASDTSTHGGFSVPRRAAEKIFPALDFSM
+QPPCQELVAKDIHDNTWTFRHIYRGQPKRHLLTTGWSVFVSTKRLFAGDSVLFIRDGKAQLLLGIRRANRQQPALSSSVI
+SSDSMHIGVLAAAAHANANNSPFTIFYNPRAAPAEFVVPLAKYTKAMYAQVSLGMRFRMIFETEECGVRRYMGTVTGISD
+LDPVRWKNSQWRNLQIGWDESAAGDRPSRVSVWDIEPVLTPFYICPPPFFRPRFSGQPGMPDDETDMESALKRAMPWLDN
+SLEMKDPSSTIFPGLSLVQWMNMQQQNGQLPSAAAQPGFFPSMLSPTAALHNNLGGTDDPSKLLSFQTPHGGISSSNLQF
+NKQNQQAPMSQLPQPPTTLSQQQQLQQLLHSSLNHQQQQSQSQQQQQQQQLLQQQQQLQSQQHSNNNQSQSQQQQQLLQQ
+QQQQQLQQQHQQPLQQQTQQQQLRTQPLQSHSHPQPQQLQQHKLQQLQVPQNQLYNGQQAAQQHQSQQASTHHLQPQLVS
+GSMASSVITPPSSSLNQSFQQQQQQSKQLQQAHHHLGASTSQSSVIETSKSSSNLMSAPPQETQFSRQVEQQQPPGLNGQ
+NQQTLLQQKAHQAQAQQIFQQSLLEQPHIQFQLLQRLQQQQQQQFLSPQSQLPHHQLQSQQLQQLPTLSQGHQFPSSCTN
+NGLSTLQPPQMLVSRPQEKQNPPVGGGVKAYSGITDGGDAPSSSTSPSTNNCQISSSGFLNRSQSGPAILIPDAAIDMSG
+NLVQDLYSKSDMRLKQELVGQQKSKASLTDHQLEASASGTSYGLDGGENNRQQNFLAPTFGLDGDSRNSLLGGANVDNGF
+VPDTLLSRGYDSQKDLQNMLSNYGGVTNDIGTEMSTSAVRTQSFGVPNVPAISNDLAVNDAGVLGGGLWPAQTQRMRTYT
+KVQKRGSVGRSIDVNRYRGYDELRHDLARMFGIEGQLEDPQTSDWKLVYVDHENDILLVGDDPWEEFVNCVQSIKILSSA
+EVQQMSLDGNFAGVPVTNQACSGGDSGNAWRGHYDDNSATSFNR
+```
+### Compute a multiple alignment of these sequences with Clustal Omega. Check the available output formats:
+# STOCKHOLM 1.0
+```bash
+clustalo -i high_score_hits.fasta -o aligned_sequences.sto --outfmt=st
+```
+```bash
+#=GS O23661 DE    Auxin response factor 3 OS=Arabidopsis thaliana OX=3702 GN=ARF3 PE=1 SV=2
+#=GS P93022 DE    Auxin response factor 7 OS=Arabidopsis thaliana OX=3702 GN=ARF7 PE=1 SV=2
+#=GS P93024 DE    Auxin response factor 5 OS=Arabidopsis thaliana OX=3702 GN=ARF5 PE=1 SV=3
+#=GS Q84WU6 DE    Auxin response factor 17 OS=Arabidopsis thaliana OX=3702 GN=ARF17 PE=2 SV=1
+#=GS Q8L7G0 DE    Auxin response factor 1 OS=Arabidopsis thaliana OX=3702 GN=ARF1 PE=1 SV=2
+#=GS Q8RYC8 DE    Auxin response factor 19 OS=Arabidopsis thaliana OX=3702 GN=ARF19 PE=1 SV=2
+#=GS Q93YR9 DE    Auxin response factor 16 OS=Arabidopsis thaliana OX=3702 GN=ARF16 PE=1 SV=1
+#=GS Q94JM3 DE    Auxin response factor 2 OS=Arabidopsis thaliana OX=3702 GN=ARF2 PE=1 SV=2
+#=GS Q9C5W9 DE    Auxin response factor 18 OS=Arabidopsis thaliana OX=3702 GN=ARF18 PE=1 SV=1
+#=GS Q9C7I9 DE    Auxin response factor 20 OS=Arabidopsis thaliana OX=3702 GN=ARF20 PE=2 SV=3
+#=GS Q9C8N7 DE    Auxin response factor 22 OS=Arabidopsis thaliana OX=3702 GN=ARF22 PE=2 SV=2
+#=GS Q9C8N9 DE    Putative auxin response factor 21 OS=Arabidopsis thaliana OX=3702 GN=ARF21 PE=3 SV=2
+#=GS Q9FGV1 DE    Auxin response factor 8 OS=Arabidopsis thaliana OX=3702 GN=ARF8 PE=1 SV=2
+#=GS Q9FX25 DE    Auxin response factor 13 OS=Arabidopsis thaliana OX=3702 GN=ARF13 PE=2 SV=3
+#=GS Q9LQE3 DE    Putative auxin response factor 15 OS=Arabidopsis thaliana OX=3702 GN=ARF15 PE=3 SV=2
+#=GS Q9LQE8 DE    Putative auxin response factor 14 OS=Arabidopsis thaliana OX=3702 GN=ARF14 PE=3 SV=2
+#=GS Q9SKN5 DE    Auxin response factor 10 OS=Arabidopsis thaliana OX=3702 GN=ARF10 PE=2 SV=1
+#=GS Q9XED8 DE    Auxin response factor 9 OS=Arabidopsis thaliana OX=3702 GN=ARF9 PE=1 SV=1
+#=GS Q9XID4 DE    Auxin response factor 12 OS=Arabidopsis thaliana OX=3702 GN=ARF12 PE=2 SV=2
+#=GS Q9ZPY6 DE    Auxin response factor 11 OS=Arabidopsis thaliana OX=3702 GN=ARF11 PE=2 SV=3
+#=GS Q9ZTX8 DE    Auxin response factor 6 OS=Arabidopsis thaliana OX=3702 GN=ARF6 PE=1 SV=2
+#=GS Q9ZTX9 DE    Auxin response factor 4 OS=Arabidopsis thaliana OX=3702 GN=ARF4 PE=1 SV=1
+
+O23661  ---------MGGLIDLNVMETEEDETQTQTPS--------SA--------
+P93022  --------------------------------------------------
+P93024  --------------MMASLSCVEDKMKTSCLVNGGGTITTTTSQSTL---
+Q84WU6  --------------------------------------------------
+Q8L7G0  --------------------------------------------------
+Q8RYC8  --------------------------------------------------
+Q93YR9  --------------------------------------------------
+Q94JM3  ---------------MASSEVS-------MKGNRGGDNFSSSGFSDPKET
+Q9C5W9  -----------------------------MASVEGDDDFGS---------
+Q9C7I9  --------------------------------------------------
+Q9C8N7  --------------------------------------------------
+Q9C8N9  --------------------------------------------------
+Q9FGV1  --------------------------------------------------
+Q9FX25  --------------------------------------------------
+Q9LQE3  --------------------------------------------------
+```
+### Build a HMM out of these aligned sequences with hmmbuild:
+```bash
+hmmbuild ARF_profile.hmm aligned_sequences.sto
+```
+### Scan the HMM against your sequence collection with hmmerscan and write a short report on the results. This should be deliverable Exe6:
+```bash
+hmmsearch --tblout exe6_report.txt ARF_profile.hmm uniprot_Atha.fasta
+```
