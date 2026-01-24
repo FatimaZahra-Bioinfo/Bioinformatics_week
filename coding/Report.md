@@ -207,3 +207,8 @@ hmmbuild ARF_profile.hmm aligned_sequences.sto
 ```bash
 hmmsearch --tblout exe6_report.txt ARF_profile.hmm uniprot_Atha.fasta
 ```
+
+Summary: 
+
+A Profile Hidden Markov Model (HMM) was constructed using the aligned sequences of high-scoring BLAST hits (Bit score > 200). This model was then used to scan the complete Arabidopsis thaliana proteome (15,719 sequences) using hmmsearch. The HMM search identified 74 significant hits (proteins) belonging to this family. The top hits correspond to known Auxin Response Factors (ARFs) with extremely high bit scores. The search successfully detected more distant relatives (such as B3 domain-containing proteins) that might share structural features despite lower sequence identity. This demonstrates the superior sensitivity of HMMs compared to single-sequence BLAST searches for detecting full protein families.
+## EX7: Produce a table with i) domains defined by the boundaries of matched entries from the Protein Data Bank and Pfam and ii) similar sequences in AlphaFoldDB.
