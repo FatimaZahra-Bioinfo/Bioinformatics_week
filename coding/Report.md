@@ -1,16 +1,19 @@
 # Session 1
 
-## EX 1
-How many sequences have been formatted and how does this affect the E-value of BLAST searches?
+## EX 1 How many sequences have been formatted and how does this affect the E-value of BLAST searches?
 
 ```bash
 makeblastdb -dbtype prot -in uniprot_Atha.fasta
 ```
 The total number of Sequences Formatted is 15,719.
 The E-value (Expect value) represents the number of hits you can expect to find by pure chance.
-If the number of sequences is high like our case, the number of matches you can expect to happen by chance increase so a high E-value, which is the contrary with few number of sequences where an obtained match would be hardly due to chance. 
+If the number of sequences is high like our case, the number of matches you can expect to happen by chance increase so a high E-value, which is the contrary with few number of sequences where an obtained match would be hardly due to chance.
+## Can you redirect the output to separate files called test.faa.blast and test.fna.blast?
 
-Here is the code:
-
+Yes. In the command line, we can use the standard shell redirection (>) :
 ```bash
-docker pull csicunam/bioinformatics_iamz:latest
+blastp -db uniprot_Atha.fasta -query test.faa -outfmt 6> test.faa.blast
+blastx -db uniprot_Atha.fasta -query test.fna -outfmt 6 > test.fna.blast
+```
+
+
