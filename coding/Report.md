@@ -65,3 +65,50 @@ AT1G30330.2     sp|Q9ZPY6|ARFK_ARATH    51.852  351     160     7       64      
 AT1G30330.2     sp|Q9ZPY6|ARFK_ARATH    39.130  92      53      2       2395    2667    514     603     2.40e-12       70.1
 AT1G30330.2     sp|O23661|ARFC_ARATH    47.558  389     180     8       73      1194    54      433     3.19e-101      330
 ```
+## EX4: Are there differences in the results retrieved in both searches?
+
+To answer this, we need to compare the tabular files already created in Exe2 (test.faa.blast and test.fna.blast). 
+```bash
+head -n 5 test.faa.blast test.fna.blast
+```
+As showen below, if we looked at the second column, that these 5 first hits are the same for the both searches. Which is normal since the DNA (test.fna file) codes for the exact same protein as the protein file (test.faa). 
+However, there some differnces due the file type (DNA or Protein). The query coordinates in columns  7 and 8, shows that for protein, the alignment ends  at position 935 Amino Acids, and for nucleotides at 2805, which is 3 times 935 because each amino acid is made of 3 nucleotides (a codon). Moreover, the scoring (column 12) shows that the top hit for blastp has a bit score of 1915 and a bit score of 1706 for blastx 
+```bash
+==> test.faa.blast <==
+AT1G30330.2     sp|Q9ZTX8|ARFF_ARATH    100.000 935     0       0       1       935     1       935     0.0     1915
+AT1G30330.2     sp|Q9FGV1|ARFH_ARATH    55.667  900     284     20      1       888     1       797     0.0     850
+AT1G30330.2     sp|Q8RYC8|ARFS_ARATH    65.116  430     132     10      1       422     1       420     2.97e-174      534
+AT1G30330.2     sp|Q8RYC8|ARFS_ARATH    48.889  135     67      1       776     910     938     1070    5.47e-32       134
+AT1G30330.2     sp|P93022|ARFG_ARATH    64.871  427     132     10      4       422     5       421     1.23e-169      524
+
+==> test.fna.blast <==
+AT1G30330.2     sp|Q9ZTX8|ARFF_ARATH    100.000 935     0       0       1       2805    1       935     0.0     1706
+AT1G30330.2     sp|Q9FGV1|ARFH_ARATH    75.584  471     100     4       1       1392    1       463     0.0     699
+AT1G30330.2     sp|Q9FGV1|ARFH_ARATH    48.198  222     92      8       2020    2664    592     797     1.05e-43       170
+AT1G30330.2     sp|Q8RYC8|ARFS_ARATH    65.116  430     132     10      1       1266    1       420     2.38e-170      527
+AT1G30330.2     sp|Q8RYC8|ARFS_ARATH    48.889  135     67      1       2326    2730    938     1070    1.48e-31       132
+```
+## EX5: Can you explain the contents of the output file profile.out?
+```bash
+psiblast -db uniprot_Atha.fasta -query test.faa -num_iterations 3 -out_ascii_pssm profile.out
+```
+The profile.out file contains the PSSM (Position-Specific Scoring Matrix). Unlike standard BLAST, which uses a fixed scoring matrix (like BLOSUM62) for the entire sequence, this PSSM assigns a unique score to every position. 
+For example if we look at the first row of the matrix and at the column for M (Methionine). It has a score of 6, which is a high positive score. It means that at position 1, being a Methionine is "good" and expected. In contrast, if we look at the column for D (Aspartic Acid). It has a score of -3, which means that replacing the Methionine with Aspartic Acid is evolutionarily "bad".
+This shows a part of the matrix in the profile.out file:
+```bash
+Last position-specific scoring matrix computed, weighted observed percentages rounded down, information per position, and relative weight of gapless real matches to pseudocounts
+            A   R   N   D   C   Q   E   G   H   I   L   K   M   F   P   S   T   W   Y   V   A   R   N   D   C   Q   E   G   H   I   L   K   M   F   P   S   T   W   Y   V
+    1 M    -1  -1  -2  -3  -2  -1  -2  -3  -2   1   2  -1   6   0  -3  -2  -1  -2  -1   1    0   0   0   0   0   0   0   0   0   0   0   0 100   0   0   0   0   0   0   0  0.39 0.01
+    2 R    -1   3   0  -1  -3   1   1  -2  -1  -3  -2   4  -1  -3  -1   0  -1  -3  -2  -2    0  25   0   0   0   0   0   0   0   0   0  75   0   0   0   0   0   0   0   0  0.53 0.01
+    3 L     2  -2  -2  -3  -1  -1  -2  -2  -2   1   2  -2   3   0  -2  -1  -1  -2  -1   0   35   0   0   0   0   0   0   0   0   0  35   0  30   0   0   0   0   0   0   0  0.20 0.01
+    4 S     0  -1   0   0  -2   0   1  -1  -1  -2  -3   0  -2  -3   3   3   2  -3  -2  -2    0   0   0   0   0   0  14   0   0   0   0   0   0   0  20  54  12   0   0   0  0.47 0.02
+    5 S     0  -1   2  -1  -2  -1  -1   4  -1  -3  -3  -1  -2  -3  -2   2   1  -3  -2  -2    0   0  14   0   0   0   0  45   0   0   0   0   0   0   0  30  11   0   0   0  0.46 0.01
+    6 A     0  -1   5   1  -2   0   0   0   0  -3  -3   0  -2  -3  -2   1   0  -4  -2  -3   10   0  79   0   0   0   0   0   0   0   0   0   0   0   0  11   0   0   0   0  0.60 0.03
+    7 G     0  -3  -1  -2  -2  -2  -2   4  -3   1  -1  -2  -1  -2  -2  -1  -1  -3  -2   2    0   0   0   0   0   0   0  55   0  12   0   0   0   0   0   0   0   0   0  32  0.40 0.02
+    8 F    -1  -2  -3  -3  -1  -2  -3  -3  -3   2   1  -2   2   3  -3  -2  -1  -1   0   3    0   0   0   0   0   0   0   0   0   0  11   0  14  20   0   0   0   0   0  56  0.27 0.02
+    9 N    -1  -1   5   1  -2   0  -1   1   0  -2  -1  -1  -1  -3  -2   1   0  -3  -2  -2    0   0  68   0   0   0   0  11   0   0  10   0   0   0   0  11   0   0   0   0  0.46 0.02
+   10 P     2  -2  -2  -2  -2   1  -1  -1  -2  -1  -2  -1  -1  -3   5   0   0  -3  -2   0   37   0   0   0   0   9   0   0   0   0   0   0   0   0  42   0   5   0   0   7  0.68 0.03
+   11 Q     0   0   1   0  -2   5   1  -1   0  -3  -3   1  -1  -3  -1   2   0  -2  -2  -2    0   0   9   0   0  67   0   0   0   0   0   0   0   0   0  25   0   0   0   0  0.52 0.04
+   12 P     1  -2  -1  -1  -2  -1  -1   1  -2  -3  -3  -1  -2  -3   6   1  -1  -3  -3  -2   17   0   0   0   0   0   0   9   0   0   0   0   0   0  60  15   0   0   0   0  1.08 0.03
+   13 H    -1   0   1   1  -3   1   3  -2   3  -2  -2   1  -2  -2  -1   0   1  -3  -1  -2    1   0   8   0   0   0  45   1  17   0   1   6   0   0   0   1  17   0   0   1  0.35 0.02
+```
