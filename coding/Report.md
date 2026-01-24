@@ -23,6 +23,7 @@ blastp -db uniprot_Atha.fasta -query test.faa
 blastx -db uniprot_Atha.fasta -query test.fna 
 ```
 Example of default format:
+```bash
 >Q9ZTX8 Auxin response factor 6 OS=Arabidopsis thaliana OX=3702 GN=ARF6
 PE=1 SV=2
 Length=935
@@ -37,11 +38,12 @@ Sbjct  1    MRLSSAGFNPQPHEVTGEKRVLNSELWHACAGPLVSLPPVGSRVVYFPQGHSEQVAASTN  60
 Query  61   KEVDAHIPNYPSLHPQLICQLHNVTMHADVETDEVYAQMTLQPLNAQEQKDPYLPAELGV  120
             KEVDAHIPNYPSLHPQLICQLHNVTMHADVETDEVYAQMTLQPLNAQEQKDPYLPAELGV
 Sbjct  61   KEVDAHIPNYPSLHPQLICQLHNVTMHADVETDEVYAQMTLQPLNAQEQKDPYLPAELGV  120
-
+```
 Example of tabular format:
 ```bash
 head -20 test.fna.blast
 ```
+```bash
 AT1G30330.2     sp|Q9ZTX8|ARFF_ARATH    100.000 935     0       0       1       2805    1       935     0.0     1706
 AT1G30330.2     sp|Q9FGV1|ARFH_ARATH    75.584  471     100     4       1       1392    1       463     0.0     699
 AT1G30330.2     sp|Q9FGV1|ARFH_ARATH    48.198  222     92      8       2020    2664    592     797     1.05e-43       170
@@ -62,4 +64,4 @@ AT1G30330.2     sp|Q9C5W9|ARFR_ARATH    38.835  103     60      2       2353    
 AT1G30330.2     sp|Q9ZPY6|ARFK_ARATH    51.852  351     160     7       64      1110    39      382     4.55e-107      346
 AT1G30330.2     sp|Q9ZPY6|ARFK_ARATH    39.130  92      53      2       2395    2667    514     603     2.40e-12       70.1
 AT1G30330.2     sp|O23661|ARFC_ARATH    47.558  389     180     8       73      1194    54      433     3.19e-101      330
-
+```
