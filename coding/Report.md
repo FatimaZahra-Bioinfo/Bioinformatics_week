@@ -112,3 +112,5 @@ Last position-specific scoring matrix computed, weighted observed percentages ro
    12 P     1  -2  -1  -1  -2  -1  -1   1  -2  -3  -3  -1  -2  -3   6   1  -1  -3  -3  -2   17   0   0   0   0   0   0   9   0   0   0   0   0   0  60  15   0   0   0   0  1.08 0.03
    13 H    -1   0   1   1  -3   1   3  -2   3  -2  -2   1  -2  -2  -1   0   1  -3  -1  -2    1   0   8   0   0   0  45   1  17   0   1   6   0   0   0   1  17   0   0   1  0.35 0.02
 ```
+## EX6:
+### Create a FASTA file with the complete protein sequences of the matches of your protein search with bit score > 200. You might find one-liners useful for this.
