@@ -156,7 +156,6 @@ KVQKRGSVGRSIDVNRYRGYDELRHDLARMFGIEGQLEDPQTSDWKLVYVDHENDILLVGDDPWEEFVNCVQSIKILSSA
 EVQQMSLDGNFAGVPVTNQACSGGDSGNAWRGHYDDNSATSFNR
 ```
 ### Compute a multiple alignment of these sequences with Clustal Omega. Check the available output formats:
-# STOCKHOLM 1.0
 ```bash
 clustalo -i high_score_hits.fasta -o aligned_sequences.sto --outfmt=st
 ```
