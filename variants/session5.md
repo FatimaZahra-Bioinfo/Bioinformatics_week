@@ -1,1 +1,89 @@
-Assignment session 5, by Fatima Zahra AMGHAR and Nesrine BEN RHOUMA
+# By Fatima Zahra AMGHAR and Nesrine BEN RHOUMA
+## Exercise 1
+### 1.1 Note that there are 2 FASTQ files with the same name but different numeric suffix, why?
+
+The two files 1 and 2 indicate that this data comes from Paired-End Sequencing. In paired-end sequencing, a DNA fragment is sequenced from both ends. For that reason, both files have the exact same number of sequences = 172253.
+
+### 1.2 Check first SAMEA2569438.chr10_1.fastq.gz and then SAMEA2569438.chr10_2.fastq.gz, can you spot * the difference? Do you recognize the typical FASTQ format of these files?
+
+To get FASTQ files we run inside DOCKER these commands:
+```bash
+(base) iamz@PCA2-03:~$ docker run -it -v $HOME/transcriptome_class:/data -v/tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY csicunam/bioinformatics_iamz:latest
+vep@2343476a38ae:/home/vep$ cd variant_data/
+vep@2343476a38ae:/home/vep/variant_data$ zcat SAMEA2569438.chr10_1.fastq.gz | head -n 4
+vep@2343476a38ae:/home/vep/variant_data$ zcat SAMEA2569438.chr10_2.fastq.gz | head -n 4
+```
+we get :
+```bash
+FASTQ for chr10_1:
+@ERR605441.15/1
+ATCTTCTTGTTATTGCAACACATGACATGATATGCTATATGTATGCTAAGCTCTTGAACATTAATGAACATAATTCCTATGCT
++
+FHHHHHJJJJJJJJJJJJJHIIJJIJIIJIJIJJJJJJIJJJIJJJIIJIJJJJJJIJIIJJIJJJIJIIJHHHHHHFFFFFF
+```
+```bash
+FASTQ for chr10_2:
+@ERR605441.15/2
+AACCAATTTGTGAATAAATTCCAAATAACAAAACCAGTAATTTCCAATGCCCAATTGTTCTTCACAGAATAATAATCAAAAAA
++
+FHHHHHJJJJGHJIIJJJJJJJJJJJJJJJJJJJJJJFHHIJJJHJIIJJJJJJJJJIIJJJJJJHHHHHHFFFFFFFEEEDD
+```
+We observed that there is a difference in the headers end between the two files
+As shown above, we can recognize the standard 4-line FASTQ format :
+1. Header: Starts with @ followed by the sequence ID (e.g., @ERR605441.15/1).
+2. Sequence: The raw nucleotide sequence (e.g., ATCTT...).
+3. Separator: A line starting with +
+4. Quality: A string of ASCII characters representing the Phred quality score for each base (e.g., FHHHH...), corresponding 1-to-1 with the sequence line.
+
+### 1.3 Are read starts and ends similar in terms of error rate?
+Based on the FASTQC files : The Per base sequence quality graphs for both files show very
+high quality at the beginning (High Phred scores correspond to a very low error rate). As
+the read progresses, the quality scores drop. In both files, the average quality decreases and
+the variance (error bars) increases at the end of the reads (Lower Phred scores correspond
+to a higher error rate).
+Exercise 2
+2.1 Compare the different file sizes for each of the alignment files generated in the previous
+section (formats SAM, BAM and CRAM).
+To compare between these files formats, we run these command:
+vep@2343476a38ae:/data$ ls -lh SAMEA2569438.chr10.*
+-rw-r--r-- 1 vep vep 32M Jan 23 13:53 SAMEA2569438.chr10.bam
+-rw-r--r-- 1 vep vep 13M Jan 23 13:55 SAMEA2569438.chr10.cram
+-rw-r--r-- 1 vep vep 91M Jan 23 14:00 SAMEA2569438.chr10.sam
+So we get:
+ SAM file = 91 MB → largest, because it’s plain text and stores all information
+without compression.
+ BAM file = 32 MB → smaller, because it’s a binary compressed version of SAM.
+ CRAM file = 13 MB → smallest, because it uses referencebased compression.
+ Thus, the order of sizes is: SAM &gt; BAM &gt; CRAM.
+Exercise 3
+3.1 Using samtools mpileup estimate the percentage of chr10 with depth &gt; 100.
+To get the Count of bases with depth &gt; 100, we run this command on DOCKER:
+vep@2343476a38ae:/data$ samtools mpileup SAMEA2569438.chr10.sorted.bam | awk
+&#39;$4 &gt; 100&#39; | wc -l
+[mpileup] 1 samples in 1 input files
+51825
+Then, to obtain the total length of Chromosome 10:
+
+vep@2343476a38ae:/data$ cat reference.fna.fai
+10 23207287 60 60 61
+To find the percentage, we divide the count by the total length and multiply by 100, so we get
+approximately 0.22% of chromosome 10 has a read depth greater than 100.
+Exercise 4 (Practiced on IGV)
+Exercise 5
+5.5 Take a look to INDEL variant at 10:9,058,200-9,058,229. What are the reference and
+alternative alleles? It this position heterozygous in your mapped sample?
+ Reference Allele: CAAAGGC
+ Alternative Allele: CAAAAGGC
+So, There is an insertion of a single &#39;A&#39;.
+ Is it Heterozygous?
+No, it is Homozygous. The popup explicitly says &quot;Zygosity: Homozygous variant&quot;.
+5.6 Check the SNPs at 10:9,059,325-9,059,426. Are they all similar in terms of read
+dpeth (DP)?
+Yes, they are similar. The values range only from 5 to 8. It is a difference of 1 to 3 reads that
+is considered very small variation.
+5.7 Examining the aligned reads supporting the SNPs at 10:10,000,166-10,000,226 by
+loading the BAM and index files. Do any of these fall into a gene model? Save the
+resulting image.
+The variants do not fall into a gene model. As seen in the image, the annotation.gtf track is
+completely empty at these coordinates (10:10,000,166-10,000,226), which indicates that
+these SNPs are located in an intergenic region (outside of any known genes).
