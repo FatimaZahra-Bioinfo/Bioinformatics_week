@@ -1,1 +1,7 @@
+This is my normal text explaining the code. I can even add a link or description here.
 
+```bash
+docker pull csicunam/bioinformatics_iamz:latest
+
+# bind local vep folder to container folder data/
+docker run -it -v $HOME/vep_data:/data csicunam/bio
