@@ -212,3 +212,15 @@ Summary:
 
 A Profile Hidden Markov Model (HMM) was constructed using the aligned sequences of high-scoring BLAST hits (Bit score > 200). This model was then used to scan the complete Arabidopsis thaliana proteome (15,719 sequences) using hmmsearch. The HMM search identified 74 significant hits (proteins) belonging to this family. The top hits correspond to known Auxin Response Factors (ARFs) with extremely high bit scores. The search successfully detected more distant relatives (such as B3 domain-containing proteins) that might share structural features despite lower sequence identity. This demonstrates the superior sensitivity of HMMs compared to single-sequence BLAST searches for detecting full protein families.
 ## EX7: Produce a table with i) domains defined by the boundaries of matched entries from the Protein Data Bank and Pfam and ii) similar sequences in AlphaFoldDB.
+```bash
+| Category | Database Source | Hit ID / Accession | Description / Function | Boundaries / Identity |
+| :--- | :--- | :--- | :--- | :--- |
+| **i) Domains** | **PDB** (via HHPred) | **4LDU_A** | Auxin Response Factor 5 (DNA Binding) | Residues **16 – 363** |
+| | **Pfam** (via HHPred) | **PF02362** (B3) | B3 DNA Binding Domain | Residues **129 – 208** |
+| | **Pfam** (via HHPred) | **PF06507** (ARF_AD) | ARF Ancillary Domain | Residues **278 – 357** |
+| | **PDB** (via HHPred) | **6L5K_A** | Auxin Response Factor 5 (PB1 / Oligomerization) | Residues **793 – 888** |
+| | **Pfam** (via HHPred) | **PF02309** (AUX_IAA) | AUX/IAA Family (PB1 domain) | Residues **795 – 854** |
+| **ii) Similar Seqs** | **AlphaFoldDB** | **Q9ZTX8** | Auxin Response Factor 6 (*Arabidopsis thaliana*) | **100% Identity** |
+| | **AlphaFoldDB** | **Q6H6V4** | Auxin Response Factor 6 (*Oryza sativa*) | **63.0% Identity** |
+| | **AlphaFoldDB** | **Q653U3** | Auxin Response Factor 17 (*Oryza sativa*) | **62.6% Identity** |
+```
