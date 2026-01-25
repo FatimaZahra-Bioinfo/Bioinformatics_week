@@ -75,7 +75,7 @@ Then, to obtain the total length of Chromosome 10:
 ```bash
 vep@2343476a38ae:/data$ cat reference.fna.fai
 ```
-The total length of Chromosome 1023207287 
+The total length of Chromosome 10 is 23207287 
 
 To find the percentage, we divide the count by the total length and multiply by 100, so we get: approximately **0.22%** of chromosome 10 has a read depth greater than 100.
 
