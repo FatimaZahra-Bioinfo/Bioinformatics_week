@@ -42,49 +42,58 @@ to a higher error rate).
 <img width="1045" height="804" alt="image" src="https://github.com/user-attachments/assets/b5b7123c-9304-4b68-8bcb-46544086467e" />
 
 
-Exercise 2
-2.1 Compare the different file sizes for each of the alignment files generated in the previous
-section (formats SAM, BAM and CRAM).
-To compare between these files formats, we run these command:
+## Exercise 2
+## 2.1 Compare the different file sizes for each of the alignment files generated in the previous section (formats SAM, BAM and CRAM).
+To compare between these files formats, we run these commands:
+```bash
 vep@2343476a38ae:/data$ ls -lh SAMEA2569438.chr10.*
 -rw-r--r-- 1 vep vep 32M Jan 23 13:53 SAMEA2569438.chr10.bam
 -rw-r--r-- 1 vep vep 13M Jan 23 13:55 SAMEA2569438.chr10.cram
 -rw-r--r-- 1 vep vep 91M Jan 23 14:00 SAMEA2569438.chr10.sam
-So we get:
- SAM file = 91 MB → largest, because it’s plain text and stores all information
-without compression.
- BAM file = 32 MB → smaller, because it’s a binary compressed version of SAM.
- CRAM file = 13 MB → smallest, because it uses referencebased compression.
- Thus, the order of sizes is: SAM &gt; BAM &gt; CRAM.
-Exercise 3
-3.1 Using samtools mpileup estimate the percentage of chr10 with depth &gt; 100.
-To get the Count of bases with depth &gt; 100, we run this command on DOCKER:
-vep@2343476a38ae:/data$ samtools mpileup SAMEA2569438.chr10.sorted.bam | awk
-&#39;$4 &gt; 100&#39; | wc -l
-[mpileup] 1 samples in 1 input files
-51825
-Then, to obtain the total length of Chromosome 10:
+```
+So we got:
 
+SAM file = 91 MB → largest, because it’s plain text and stores all information
+without compression.
+
+BAM file = 32 MB → smaller, because it’s a binary compressed version of SAM.
+
+CRAM file = 13 MB → smallest, because it uses referencebased compression.
+
+Thus, the order of sizes is: SAM > BAM > CRAM.
+
+## Exercise 3
+### 3.1 Using samtools mpileup estimate the percentage of chr10 with depth &gt; 100.
+To get the Count of bases with depth > 100, we run this command on DOCKER:
+```bash
+vep@2343476a38ae:/data$ samtools mpileup SAMEA2569438.chr10.sorted.bam | awk &#39;$4 &gt; 100&#39; | wc -l
+[mpileup] 1 samples in 1 input files
+```
+The Count of bases with depth > 100 is 51825.
+
+Then, to obtain the total length of Chromosome 10:
+```bash
 vep@2343476a38ae:/data$ cat reference.fna.fai
-10 23207287 60 60 61
-To find the percentage, we divide the count by the total length and multiply by 100, so we get
-approximately 0.22% of chromosome 10 has a read depth greater than 100.
-Exercise 4 (Practiced on IGV)
-Exercise 5
-5.5 Take a look to INDEL variant at 10:9,058,200-9,058,229. What are the reference and
-alternative alleles? It this position heterozygous in your mapped sample?
- Reference Allele: CAAAGGC
- Alternative Allele: CAAAAGGC
-So, There is an insertion of a single &#39;A&#39;.
- Is it Heterozygous?
-No, it is Homozygous. The popup explicitly says &quot;Zygosity: Homozygous variant&quot;.
-5.6 Check the SNPs at 10:9,059,325-9,059,426. Are they all similar in terms of read
-dpeth (DP)?
-Yes, they are similar. The values range only from 5 to 8. It is a difference of 1 to 3 reads that
-is considered very small variation.
-5.7 Examining the aligned reads supporting the SNPs at 10:10,000,166-10,000,226 by
-loading the BAM and index files. Do any of these fall into a gene model? Save the
-resulting image.
-The variants do not fall into a gene model. As seen in the image, the annotation.gtf track is
-completely empty at these coordinates (10:10,000,166-10,000,226), which indicates that
-these SNPs are located in an intergenic region (outside of any known genes).
+```
+The total length of Chromosome 1023207287 
+
+To find the percentage, we divide the count by the total length and multiply by 100, so we get: approximately **0.22%** of chromosome 10 has a read depth greater than 100.
+
+## Exercise 4 (Practiced on IGV)
+## Exercise 5
+### 5.5 Take a look to INDEL variant at 10:9,058,200-9,058,229. What are the reference and alternative alleles? It this position heterozygous in your mapped sample?
+Reference Allele: CAAAGGC
+
+Alternative Allele: CAAAAGGC
+
+So, There is an insertion of a single 'A'.
+
+Is it Heterozygous?
+
+No, it is Homozygous. The popup explicitly says "Zygosity: Homozygous variant".
+### 5.6 Check the SNPs at 10:9,059,325-9,059,426. Are they all similar in terms of read dpeth (DP)?
+
+Yes, they are similar. The values range only from 5 to 8. It is a difference of 1 to 3 reads that is considered very small variation.
+### 5.7 Examining the aligned reads supporting the SNPs at 10:10,000,166-10,000,226 byloading the BAM and index files. Do any of these fall into a gene model? Save theresulting image.
+The variants do not fall into a gene model. As seen in the image, the annotation.gtf track is completely empty at these coordinates (10:10,000,166-10,000,226), which indicates that these SNPs are located in an intergenic region (outside of any known genes).
+![5 7 (1)](https://github.com/user-attachments/assets/b9b19601-3566-46ce-a597-3df869c75c75)
