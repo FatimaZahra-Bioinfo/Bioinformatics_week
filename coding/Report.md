@@ -300,23 +300,9 @@ We can see that no matching annotations have been found for Prunus perisca suppo
 | **6. Organism Counts** | **Arabidopsis:** 638 annotations<br>**Zea mays:** 178 annotations<br>**Prunus persica:** 59 annotations |
 | **7. Experimental Evidence** | **Arabidopsis:** 423 annotations (well-studied model organism)<br>**Prunus persica:** 0 annotations (lacks experimental verification) |
 ## EX10: Choose from the options [here](https://eead-csic-compbio.github.io/bioinformatica_estructural/#c%C3%B3mo-obtener-y-usar-modelos-de-alphafold-y-algoritmos-similares) and model the structure of one of the sequences obtained in Exe5. Save a screen capture of your model and a table with associated quality scores.
-I used the test.faa sequence:
-```bash
-MRLSSAGFNPQPHEVTGEKRVLNSELWHACAGPLVSLPPVGSRVVYFPQGHSEQVAASTNKEVDAHIPNYPSLHPQLICQ
-LHNVTMHADVETDEVYAQMTLQPLNAQEQKDPYLPAELGVPSRQPTNYFCKTLTASDTSTHGGFSVPRRAAEKVFPPLDY
-SQQPPAQELMARDLHDNEWKFRHIFRGQPKRHLLTTGWSVFVSAKRLVAGDSVLFIWNDKNQLLLGIRRANRPQTVMPSS
-VLSSDSMHLGLLAAAAHAAATNSRFTIFYNPRASPSEFVIPLAKYVKAVYHTRVSVGMRFRMLFETEESSVRRYMGTITG
-ICDLDPTRWANSHWRSVKVGWDESTAGERQPRVSLWEIEPLTTFPMYPSPFPLRLKRPWPPGLPSFHGLKEDDMGMSMSS
-PLMWDRGLQSLNFQGMGVNPWMQPRLDTSGLLGMQNDVYQAMAAAALQDMRGIDPAKAAASLLQFQNSPGFSMQSPSLVQ
-PQMLQQQLSQQQQQLSQQQQQQQQLSQQQQQQLSQQQQQQLSQQQQQQLSQQQQQQAYLGVPETHQPQSQAQSQSNNHLS
-QQQQQVVDNHNPSASSAAVVSAMSQFGSASQPNTSPLQSMTSLCHQQSFSDTNGGNNPISPLHTLLSNFSQDESSQLLHL
-TRTNSAMTSSGWPSKRPAVDSSFQHSGAGNNNTQSVLEQLGQSHTSNVPPNAVSLPPFPGGRECSIEQEGSASDPHSHLL
-FGVNIDSSSLLMPNGMSNLRSIGIEGGDSTTLPFTSSNFNNDFSGNLAMTTPSSCIDESGFLQSSENLGSENPQSNTFVK
-VYKSGSFGRSLDISKFSSYHELRSELARMFGLEGQLEDPVRSGWQLVFVDRENDVLLLGDDPWPEFVSSVWCIKILSPQE
-VQQMGKRGLELLNSAPSSNNVDKLPSNGNCDDFGNRSDPRNLGNGIASVGGSFNY
-```
-And i choosed 
+I used the protein i found in Exe5: REM13 (Uniprot ID: P0CAP5)
+And i choosed to work with alphafold, the 3D form i get is:
+
 <img width="464" height="284" alt="image" src="https://github.com/user-attachments/assets/2157c689-82e9-41c7-b6ca-630e19b5ff47" />
 
-![Alt Text](//wsl.localhost/Ubuntu-24.04/home/pcfatimazahra/Bioinformatics_week/coding/alphafold_model.png)
 
