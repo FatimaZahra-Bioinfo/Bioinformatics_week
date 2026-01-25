@@ -293,4 +293,4 @@ We can see that no matching annotations have been found for Prunus perisca suppo
 | **5. Leaf Development** | **GO ID:** GO:0048366<br>**Total Count:** ~21,805 Annotations (Global) |
 | **6. Organism Counts** | **Arabidopsis:** 638 annotations<br>**Zea mays:** 178 annotations<br>**Prunus persica:** 59 annotations |
 | **7. Experimental Evidence** | **Arabidopsis:** 423 annotations (well-studied model organism)<br>**Prunus persica:** 0 annotations (lacks experimental verification) |
-## EX10: Choose from the options [here] (https://eead-csic-compbio.github.io/bioinformatica_estructural/#c%C3%B3mo-obtener-y-usar-modelos-de-alphafold-y-algoritmos-similares) and model the structure of one of the sequences obtained in Exe5. Save a screen capture of your model and a table with associated quality scores.
+## EX10: Choose from the options [here](https://eead-csic-compbio.github.io/bioinformatica_estructural/#c%C3%B3mo-obtener-y-usar-modelos-de-alphafold-y-algoritmos-similares) and model the structure of one of the sequences obtained in Exe5. Save a screen capture of your model and a table with associated quality scores.
