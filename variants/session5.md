@@ -36,11 +36,12 @@ As shown above, we can recognize the standard 4-line FASTQ format :
 4. Quality: A string of ASCII characters representing the Phred quality score for each base (e.g., FHHHH...), corresponding 1-to-1 with the sequence line.
 
 ### 1.3 Are read starts and ends similar in terms of error rate?
-Based on the FASTQC files : The Per base sequence quality graphs for both files show very
-high quality at the beginning (High Phred scores correspond to a very low error rate). As
-the read progresses, the quality scores drop. In both files, the average quality decreases and
-the variance (error bars) increases at the end of the reads (Lower Phred scores correspond
+Based on the FASTQC files : The Per base sequence quality graphs for both files show very high quality at the beginning (High Phred scores correspond to a very low error rate). As the read progresses, the quality scores drop. In both files, the average quality decreases and the variance (error bars) increases at the end of the reads (Lower Phred scores correspond
 to a higher error rate).
+<img width="1071" height="807" alt="image" src="https://github.com/user-attachments/assets/5882c502-ba05-4b89-9eb6-6b8306de793f" />
+<img width="1045" height="804" alt="image" src="https://github.com/user-attachments/assets/b5b7123c-9304-4b68-8bcb-46544086467e" />
+
+
 Exercise 2
 2.1 Compare the different file sizes for each of the alignment files generated in the previous
 section (formats SAM, BAM and CRAM).
