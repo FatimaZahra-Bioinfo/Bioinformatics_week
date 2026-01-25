@@ -316,4 +316,5 @@ VYKSGSFGRSLDISKFSSYHELRSELARMFGLEGQLEDPVRSGWQLVFVDRENDVLLLGDDPWPEFVSSVWCIKILSPQE
 VQQMGKRGLELLNSAPSSNNVDKLPSNGNCDDFGNRSDPRNLGNGIASVGGSFNY
 ```
 And i choosed 
-![AlphaFold Model of REM13](alphafold_model.png)
+![Alt Text](//wsl.localhost/Ubuntu-24.04/home/pcfatimazahra/Bioinformatics_week/coding/alphafold_model.png)
+
