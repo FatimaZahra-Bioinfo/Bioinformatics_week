@@ -252,17 +252,23 @@ Immediate Children:
    positive regulation of photosynthesis (GO:1905157)
    photosynthetic membrane (GO:0034357)
 ### Search for the GO annotation terms of the following protein A0A068LKP4,A0A097PR28, A0A059Q6N8? What do you observe?
-A0A068LKP4
-   Name: RPW8 domain-containing protein
-   Organism (Taxon): Arabidopsis thaliana (Thale cress)
+A0A068LKP4:
 
-A0A097PR28
-   Name: General transcription factor IIH subunit 2
-   Organism (Taxon): Prunus persica (Peach)
+&nbsp;   Name: RPW8 domain-containing protein
 
-A0A059Q6N8
-   Name: Photosystem II reaction center protein M
-   Organism (Taxon): Zea mays subsp. mays (Corn/Maize)
+&nbsp;   Organism (Taxon): Arabidopsis thaliana (Thale cress)
+
+A0A097PR28:
+
+&nbsp;   Name: General transcription factor IIH subunit 2
+
+&nbsp;   Organism (Taxon): Prunus persica (Peach)
+
+A0A059Q6N8:
+
+&nbsp;   Name: Photosystem II reaction center protein M
+
+&nbsp;   Organism (Taxon): Zea mays subsp. mays (Corn/Maize)
 
 We observe that all the three proteins come from the Plant Kingdom (Viridiplantae), but they are from three different species (Arabidopsis, Peach, and Maize) and perform different functions (Defense/Resistance, Transcription, and Photosynthesis).This demonstrates that Gene Ontology (GO) allows scientists to compare biology between different types of plants.
 
@@ -278,7 +284,7 @@ Leaf development: GO:0048366
    Zea mays: 178 annotations
 
 ### Check the total number of BP annotations and proteins supported by the experimental evidence codes in both Arabidopsis thaliana and Prunus persica. (see the evidence codes) Tip : check the ‘Statistics’ box.
-&nbsp; Arabidopsis thaliana: 423 annotations to 332 distinct gene products
+   Arabidopsis thaliana: 423 annotations to 332 distinct gene products
    
    Prunus perisca: No matching annotations have been found
 
@@ -294,3 +300,20 @@ We can see that no matching annotations have been found for Prunus perisca suppo
 | **6. Organism Counts** | **Arabidopsis:** 638 annotations<br>**Zea mays:** 178 annotations<br>**Prunus persica:** 59 annotations |
 | **7. Experimental Evidence** | **Arabidopsis:** 423 annotations (well-studied model organism)<br>**Prunus persica:** 0 annotations (lacks experimental verification) |
 ## EX10: Choose from the options [here](https://eead-csic-compbio.github.io/bioinformatica_estructural/#c%C3%B3mo-obtener-y-usar-modelos-de-alphafold-y-algoritmos-similares) and model the structure of one of the sequences obtained in Exe5. Save a screen capture of your model and a table with associated quality scores.
+I used the test.faa sequence:
+```bash
+MRLSSAGFNPQPHEVTGEKRVLNSELWHACAGPLVSLPPVGSRVVYFPQGHSEQVAASTNKEVDAHIPNYPSLHPQLICQ
+LHNVTMHADVETDEVYAQMTLQPLNAQEQKDPYLPAELGVPSRQPTNYFCKTLTASDTSTHGGFSVPRRAAEKVFPPLDY
+SQQPPAQELMARDLHDNEWKFRHIFRGQPKRHLLTTGWSVFVSAKRLVAGDSVLFIWNDKNQLLLGIRRANRPQTVMPSS
+VLSSDSMHLGLLAAAAHAAATNSRFTIFYNPRASPSEFVIPLAKYVKAVYHTRVSVGMRFRMLFETEESSVRRYMGTITG
+ICDLDPTRWANSHWRSVKVGWDESTAGERQPRVSLWEIEPLTTFPMYPSPFPLRLKRPWPPGLPSFHGLKEDDMGMSMSS
+PLMWDRGLQSLNFQGMGVNPWMQPRLDTSGLLGMQNDVYQAMAAAALQDMRGIDPAKAAASLLQFQNSPGFSMQSPSLVQ
+PQMLQQQLSQQQQQLSQQQQQQQQLSQQQQQQLSQQQQQQLSQQQQQQLSQQQQQQAYLGVPETHQPQSQAQSQSNNHLS
+QQQQQVVDNHNPSASSAAVVSAMSQFGSASQPNTSPLQSMTSLCHQQSFSDTNGGNNPISPLHTLLSNFSQDESSQLLHL
+TRTNSAMTSSGWPSKRPAVDSSFQHSGAGNNNTQSVLEQLGQSHTSNVPPNAVSLPPFPGGRECSIEQEGSASDPHSHLL
+FGVNIDSSSLLMPNGMSNLRSIGIEGGDSTTLPFTSSNFNNDFSGNLAMTTPSSCIDESGFLQSSENLGSENPQSNTFVK
+VYKSGSFGRSLDISKFSSYHELRSELARMFGLEGQLEDPVRSGWQLVFVDRENDVLLLGDDPWPEFVSSVWCIKILSPQE
+VQQMGKRGLELLNSAPSSNNVDKLPSNGNCDDFGNRSDPRNLGNGIASVGGSFNY
+```
+And i choosed 
+![AlphaFold Model of REM13](alphafold_model.png)
