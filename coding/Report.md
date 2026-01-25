@@ -316,5 +316,7 @@ VYKSGSFGRSLDISKFSSYHELRSELARMFGLEGQLEDPVRSGWQLVFVDRENDVLLLGDDPWPEFVSSVWCIKILSPQE
 VQQMGKRGLELLNSAPSSNNVDKLPSNGNCDDFGNRSDPRNLGNGIASVGGSFNY
 ```
 And i choosed 
+<img width="464" height="284" alt="image" src="https://github.com/user-attachments/assets/2157c689-82e9-41c7-b6ca-630e19b5ff47" />
+
 ![Alt Text](//wsl.localhost/Ubuntu-24.04/home/pcfatimazahra/Bioinformatics_week/coding/alphafold_model.png)
 
