@@ -212,6 +212,7 @@ Summary:
 
 A Profile Hidden Markov Model (HMM) was constructed using the aligned sequences of high-scoring BLAST hits (Bit score > 200). This model was then used to scan the complete Arabidopsis thaliana proteome (15,719 sequences) using hmmsearch. The HMM search identified 74 significant hits (proteins) belonging to this family. The top hits correspond to known Auxin Response Factors (ARFs) with extremely high bit scores. The search successfully detected more distant relatives (such as B3 domain-containing proteins) that might share structural features despite lower sequence identity. This demonstrates the superior sensitivity of HMMs compared to single-sequence BLAST searches for detecting full protein families.
 ## EX7: Produce a table with i) domains defined by the boundaries of matched entries from the Protein Data Bank and Pfam and ii) similar sequences in AlphaFoldDB.
+To resolve this questions, i asked Gemini to explain for me first some concepts that i didn't get well, difference between PDB and Pfam, the boundaries, the AlphaFoldDB. and then i asked him to give me the steps to use the websites needed. When i got the results on the website, i was confused about the examples to choose, is it based on the probability or the E value or... so based on the explanation gave by the AI, I chose the examples based on coverage of the entire protein, not just the lowest E value. If I only selected the hits with the "best" (lowest) E-values, I would have listed five identical copies of the start of the protein and completely missed the rest. I chose the absolute best match (4LDU). I chose the best available matches for those specific regions (PF06507 and 6L5K), even though their E-values were slightly higher, to ensure your table described the full length of the protein.
 
 | Category | Database Source | Hit ID / Accession | Description / Function | Boundaries / Identity |
 | :--- | :--- | :--- | :--- | :--- |
@@ -224,3 +225,56 @@ A Profile Hidden Markov Model (HMM) was constructed using the aligned sequences 
 | | **AlphaFoldDB** | **Q6H6V4** | Auxin Response Factor 6 (*Oryza sativa*) | **63.0% Identity** |
 | | **AlphaFoldDB** | **Q653U3** | Auxin Response Factor 17 (*Oryza sativa*) | **62.6% Identity** |
 
+## EX9
+In this exercise we will use the GO-web browser QuickGo as it is an intuitive and weekly updated resource. Although we won’t be using them in this session, there are many other related tools out there, such as UniProt or Ensembl Plants.
+
+The goal of this task is to learn how to: - Search for GO annotations using different inputs (protein IDs, gene IDs and GO terms). - Search for all products annotated to specific GO term or GO ID. - Customize the research to better fit the user preferences.
+### Search for the GO terms and the functional categories of the following GO IDs GO:0009414, GO:0035618, GO:0016491. Tip : For multiple search GO IDs needs to be separated by a space.
+GO:0016491 : oxidoreductase activity (Category: Molecular Function, marked with an F)
+
+GO:0035618 : root hair (Category: Cellular Component, marked with a C)
+
+GO:0009414 : response to water deprivation (Category: Biological Process, marked with a P)
+### What are the GO ID and the functional category corresponding to photosynthesis?
+GO ID: GO:0015979 
+
+Functional Category: Biological Process.
+
+
+### What are the immediate parent(s) and children of the photosynthesis GO term?
+Immediate Parent: metabolic process (GO:0008152).
+Immediate Children:
+   photosynthesis, light reaction (GO:0019684) 
+   photosynthesis, dark reaction (GO:0019685) 
+   regulation of photosynthesis (GO:0010109)
+   photosystem (GO:0009521)
+   negative regulation of photosynthesis	(GO:1905156)
+   positive regulation of photosynthesis (GO:1905157)
+   photosynthetic membrane (GO:0034357)
+### Search for the GO annotation terms of the following protein A0A068LKP4,A0A097PR28, A0A059Q6N8? What do you observe?
+A0A068LKP4
+   Name: RPW8 domain-containing protein
+   Organism (Taxon): Arabidopsis thaliana (Thale cress)
+
+A0A097PR28
+   Name: General transcription factor IIH subunit 2
+   Organism (Taxon): Prunus persica (Peach)
+
+A0A059Q6N8
+   Name: Photosystem II reaction center protein M
+   Organism (Taxon): Zea mays subsp. mays (Corn/Maize)
+
+We observe that all the three proteins come from the Plant Kingdom (Viridiplantae), but they are from three different species (Arabidopsis, Peach, and Maize) and perform different functions (Defense/Resistance, Transcription, and Photosynthesis).This demonstrates that Gene Ontology (GO) allows scientists to compare biology between different types of plants.
+
+### How many gene products are involved in leaf development? Give the GO ID corresponding to this term.
+The results show 21,805 annotations to 21,009 distinct gene products.
+
+Leaf development: GO:0048366
+### How many proteins of Arabidopsis thaliana, Prunus perisca and Zea mays are assigned to the leaf development GO term. Tip : Zea mays. Taxonomy ID=4577
+   Arabidopsis thaliana: 638 annotations
+   Prunus perisca: 59 annotations
+   Zea mays: 178 annotations
+
+### Check the total number of BP annotations and proteins supported by the experimental evidence codes in both Arabidopsis thaliana and Prunus persica. (see the evidence codes) Tip : check the ‘Statistics’ box.
+   Arabidopsis thaliana: 423 annotations to 332 distinct gene products
+   Prunus perisca: No matching annotations have been found
