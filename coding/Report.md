@@ -212,7 +212,7 @@ Summary:
 
 A Profile Hidden Markov Model (HMM) was constructed using the aligned sequences of high-scoring BLAST hits (Bit score > 200). This model was then used to scan the complete Arabidopsis thaliana proteome (15,719 sequences) using hmmsearch. The HMM search identified 74 significant hits (proteins) belonging to this family. The top hits correspond to known Auxin Response Factors (ARFs) with extremely high bit scores. The search successfully detected more distant relatives (such as B3 domain-containing proteins) that might share structural features despite lower sequence identity. This demonstrates the superior sensitivity of HMMs compared to single-sequence BLAST searches for detecting full protein families.
 ## EX7: Produce a table with i) domains defined by the boundaries of matched entries from the Protein Data Bank and Pfam and ii) similar sequences in AlphaFoldDB.
-To resolve this questions, i asked Gemini to explain for me first some concepts that i didn't get well, difference between PDB and Pfam, the boundaries, the AlphaFoldDB. and then i asked him to give me the steps to use the websites needed. When i got the results on the website, i was confused about the examples to choose, is it based on the probability or the E value or... so based on the explanation gave by the AI, I chose the examples based on coverage of the entire protein, not just the lowest E value. If I only selected the hits with the "best" (lowest) E-values, I would have listed five identical copies of the start of the protein and completely missed the rest. I chose the absolute best match (4LDU). I chose the best available matches for those specific regions (PF06507 and 6L5K), even though their E-values were slightly higher, to ensure your table described the full length of the protein.
+To resolve this question, i asked Gemini to explain for me first some concepts that i didn't get well, difference between PDB and Pfam, the boundaries, the AlphaFoldDB. and then i asked him to give me the steps to use the websites needed. When i got the results on the website, i was confused about the examples to choose, is it based on the probability or the E value or... so based on the explanation gave by the AI, I chose the examples based on coverage of the entire protein, not just the lowest E value. If I only selected the hits with the "best" (lowest) E-values, I would have listed five identical copies of the start of the protein and completely missed the rest. I chose the absolute best match (4LDU). I chose the best available matches for those specific regions (PF06507 and 6L5K), even though their E-values were slightly higher, to ensure your table described the full length of the protein.
 
 | Category | Database Source | Hit ID / Accession | Description / Function | Boundaries / Identity |
 | :--- | :--- | :--- | :--- | :--- |
@@ -272,9 +272,25 @@ The results show 21,805 annotations to 21,009 distinct gene products.
 Leaf development: GO:0048366
 ### How many proteins of Arabidopsis thaliana, Prunus perisca and Zea mays are assigned to the leaf development GO term. Tip : Zea mays. Taxonomy ID=4577
    Arabidopsis thaliana: 638 annotations
+
    Prunus perisca: 59 annotations
+   
    Zea mays: 178 annotations
 
 ### Check the total number of BP annotations and proteins supported by the experimental evidence codes in both Arabidopsis thaliana and Prunus persica. (see the evidence codes) Tip : check the ‘Statistics’ box.
    Arabidopsis thaliana: 423 annotations to 332 distinct gene products
+   
    Prunus perisca: No matching annotations have been found
+
+We can see that no matching annotations have been found for Prunus perisca supported by the experimental evidence, this shows that this plant is not much studied and most of its gene functions are predicted by computers (Computational Analysis) rather than proven by manual experiments. In contrast, Arabidposis Thaliana is a model plant that was studied physically in labs by scientists. 
+### Summary table
+| Question | Result |
+| :--- | :--- |
+| **1. GO Terms** | **GO:0009414**: Response to water deprivation (Biological Process)<br>**GO:0035618**: Root hair (Cellular Component)<br>**GO:0016491**: Oxidoreductase activity (Molecular Function) |
+| **2. Photosynthesis** | **GO ID:** GO:0015979<br>**Category:** Biological Process |
+| **3. Relationships** | **Parent:** Metabolic process<br>**Children:** Light reaction, Dark reaction, Regulation of photosynthesis, photosystem, negative regulation of photosynthesis, positive regulation of photosynthesis, photosynthetic membrane |
+| **4. Protein Observation** | The proteins belong to three different organisms (*Arabidopsis*, *Prunus*, *Zea mays*) and perform different functions (Resistance, Transcription, Photosynthesis), showing that GO terms are universal across species. |
+| **5. Leaf Development** | **GO ID:** GO:0048366<br>**Total Count:** ~21,805 Annotations (Global) |
+| **6. Organism Counts** | **Arabidopsis:** 638 annotations<br>**Zea mays:** 178 annotations<br>**Prunus persica:** 59 annotations |
+| **7. Experimental Evidence** | **Arabidopsis:** 423 annotations (well-studied model organism)<br>**Prunus persica:** 0 annotations (lacks experimental verification) |
+## EX10: Choose from the options [here] (https://eead-csic-compbio.github.io/bioinformatica_estructural/#c%C3%B3mo-obtener-y-usar-modelos-de-alphafold-y-algoritmos-similares) and model the structure of one of the sequences obtained in Exe5. Save a screen capture of your model and a table with associated quality scores.
