@@ -225,6 +225,24 @@ To resolve this question, i asked Gemini to explain for me first some concepts t
 | | **AlphaFoldDB** | **Q6H6V4** | Auxin Response Factor 6 (*Oryza sativa*) | **63.0% Identity** |
 | | **AlphaFoldDB** | **Q653U3** | Auxin Response Factor 17 (*Oryza sativa*) | **62.6% Identity** |
 
+## EX8 : search for functional annotations for protein AT1G30330.2 with help from eggNOG-mapper. Make sure you set one-to-one orthologues only. What are the GO terms and eggNOG orthology groups of this protein?
+I used the Unioprot brower instead of eggNOG-mapper that was not finctional.
+
+In the uniprot browser, i looked for the ID AT1G30330 (locus tag for Auxin Response Factor 6 (ARF6)) in the searching section. Then click on Q9ZTX8:
+
+Gene Ontology (GO) Terms:
+
+
+Molecular Function: DNA-binding transcription factor activity and DNA binding.
+
+
+Biological Process: Auxin-activated signaling pathway, response to auxin and flower development.
+
+
+Cellular Component: Nucleus
+
+eggNOG Orthology Group: The protein belongs to the eggNOG group ENOG502QSCZ at the Eukaryota taxonomic level.
+
 ## EX9
 In this exercise we will use the GO-web browser QuickGo as it is an intuitive and weekly updated resource. Although we won’t be using them in this session, there are many other related tools out there, such as UniProt or Ensembl Plants.
 
@@ -300,9 +318,20 @@ We can see that no matching annotations have been found for Prunus perisca suppo
 | **6. Organism Counts** | **Arabidopsis:** 638 annotations<br>**Zea mays:** 178 annotations<br>**Prunus persica:** 59 annotations |
 | **7. Experimental Evidence** | **Arabidopsis:** 423 annotations (well-studied model organism)<br>**Prunus persica:** 0 annotations (lacks experimental verification) |
 ## EX10: Choose from the options [here](https://eead-csic-compbio.github.io/bioinformatica_estructural/#c%C3%B3mo-obtener-y-usar-modelos-de-alphafold-y-algoritmos-similares) and model the structure of one of the sequences obtained in Exe5. Save a screen capture of your model and a table with associated quality scores.
-I used the protein i found in Exe5: REM13 (Uniprot ID: P0CAP5)
-And i choosed to work with alphafold, the 3D form i get is:
+I used the protein I found in Exe5: REM13 (Uniprot ID: P0CAP5) and i choosed to work with alphafold, the 3D form I got is:
 
 <img width="464" height="284" alt="image" src="https://github.com/user-attachments/assets/2157c689-82e9-41c7-b6ca-630e19b5ff47" />
 
+| pLDDT Value | Description |
+| :--- | :--- |
+| **pLDDT > 90** | Very high confidence (Dark Blue) |
+| **90 > pLDDT > 70** | High confidence (Light Blue) |
+| **70 > pLDDT > 50** | Low confidence (Yellow) |
+| **pLDDT < 50** | Very low confidence (Orange) |
 
+# Problems that I faced
+I clonned my github in my terminal, it doesn't contain data, so i tried to upload data on my laptop, then upload it in my github and then commit changes. It was a good opportunity to undestand the different commands of git: git add, git commit, git push and git pull, because they were problematic a lot.
+A set of packages were not installed in my WSL so i installed them
+I couldn't answer the question 8, because the web site shows an error, so i used Uniprot
+# References
+I used Gemini to get some commands, and to correct some errors (like the error I got for blast in EX6 and to understand some concepts like what I explained in ex7). 
