@@ -278,7 +278,7 @@ Leaf development: GO:0048366
    Zea mays: 178 annotations
 
 ### Check the total number of BP annotations and proteins supported by the experimental evidence codes in both Arabidopsis thaliana and Prunus persica. (see the evidence codes) Tip : check the ‘Statistics’ box.
-   Arabidopsis thaliana: 423 annotations to 332 distinct gene products
+&nbsp; This line has a space   Arabidopsis thaliana: 423 annotations to 332 distinct gene products
    
    Prunus perisca: No matching annotations have been found
 
