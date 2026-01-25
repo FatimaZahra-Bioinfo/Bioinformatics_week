@@ -1,21 +1,8 @@
 # Session 3: BY Fatima Zahra AMGHAR and Nesrine BEN RHOUMA
 
-Based on the Practical_WGCNA_W_dataset.Rmd codes:
+Based on the Practical_WGCNA_W_dataset.Rmd file codes:
 
 ## 3.1) How many samples & isoforms are included in TPM_counts_Drought_W_dataset.csv? 
-```bash
-# Water (W)
-
-W_dataset = read.csv("TPM_counts_Drought_W_dataset.csv")
-dim(W_dataset)
-names(W_dataset)
-
-# Transpose rows/columns in W dataset
-
-datExprW = as.data.frame(t(W_dataset[, -c(1)]));
-names(datExprW) = W_dataset$target_id;
-rownames(datExprW) = names(W_dataset)[-c(1)];.
-```
 There are 39 samples and 9,940 isoforms.
 ## 3.2) How many samples are discarded after outlier analysis? 
 13 samples were discarded.
