@@ -1,1 +1,40 @@
+```bash
+##################
+path<-"F:/Master PGGB/QTL mapping and GWAS/Assignment"
+#hapmap<-"C:/Users/Agostino/OneDrive - CREA/CREA/Projects&Proposals/2024_CIHEAM_bis/Lecture_4/merged_hard_filtered_vcf_FS_60_MQ_60_SOR_4.imputed.new.name.hap.hmp.txt"
+hapmap=paste0(path,"/chr5H.hmp")
+setwd(path)
 
+#############functions ##########################################################
+source(paste(path,"GAPIT.library.R",sep = "/"))
+source(paste(path,"gapit_functions_new.txt",sep = "/"))
+
+################# main script ####################
+
+hapmap <- "F:/Master PGGB/QTL mapping and GWAS/Assignment/chr5H.hmp.txt"
+
+gt<-read.table(hapmap,stringsAsFactors = F, header = F, check.names = F,comment.char = "")
+phe<-read.table("simulated_phenotypes.txt",sep = "\t",dec = ".", header = T)
+rownames(phe)<-phe$Entry
+colnames(phe)[1]<-"Taxa"
+#phe$Taxa<-gsub("-",replacement = "",x = phe$Taxa,fixed =  T)
+
+# MLM (single-locus)
+myGAPIT_MLM <- GAPIT(
+  Y         = phe[, c(1, 2, 3)],
+  G         = gt,
+  SNP.MAF   = 0.05,
+  PCA.total = 3,
+  model     = "MLM",
+  file.output = TRUE
+)
+# BLINK (multi-locus)
+myGAPIT_BLINK <- GAPIT(
+  Y         = phe[, c(1, 2, 3)],
+  G         = gt,
+  SNP.MAF   = 0.05,
+  PCA.total = 3,
+  model     = "Blink",
+  file.output = TRUE
+)
+```
